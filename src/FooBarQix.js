@@ -22,17 +22,28 @@ class FooBarQix {
     });
 
     if (numberToString.length > 1) {
-      return containFooBarQiz(numberToString, string);
+      return this.containThreeFiveSeven(numberToString, string);
     }
     return string ? string : number;
+  }
+
+  containThreeFiveSeven(numberToString, string) {
+    for (let i = 0; i < numberToString.length; i++) {
+      Object.keys(this.array).forEach(key => {
+        if (numberToString.charAt(i).includes(key)) string += this.array[key];
+      });
+    }
+    return string;
   }
 }
 
 module.exports = FooBarQix;
 
-function containFooBarQiz(numberToString, string) {
-
+function containThreeFiveSeven(numberToString, string) {
   for (let i = 0; i < numberToString.length; i++) {
+    Object.keys(this.array).forEach(key => {
+      if (numberToString.charAt(i).includes(key)) string += this.array[key];
+    });
     if (numberToString.charAt(i).includes(THREE.toString())) {
       string += MESSAGE_FOO;
     }
@@ -43,7 +54,6 @@ function containFooBarQiz(numberToString, string) {
       string += MESSAGE_QIX;
     }
   }
-  
   return string;
 }
 
