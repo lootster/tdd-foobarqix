@@ -1,0 +1,19 @@
+{
+  "name": "tdd",
+  "version": "1.0.0",
+  "description": "tdd",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",     
+    "test:watch": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.achilles.systems:Sheldon/tdd.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^24.1.0"
+  }
+}
