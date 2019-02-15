@@ -5,46 +5,41 @@ const THREE = 3;
 const FIVE = 5;
 const SEVEN = 7;
 
+
 class FooBarQix {
   testNumber(number) {
-    let output = "";
+    let string = "";
     let numberToString = number.toString();
 
-    if (isDivisibleBy3(number)) output += MESSAGE_FOO;
-    if (isDivisibleBy5(number)) output += MESSAGE_BAR;
-    if (isDivisibleBy7(number)) output += MESSAGE_QIX;
+    if (isDivisibleBy(number, THREE)) string += MESSAGE_FOO;
+    if (isDivisibleBy(number, FIVE)) string += MESSAGE_BAR;
+    if (isDivisibleBy(number, SEVEN)) string += MESSAGE_QIX;
     if (numberToString.length > 1) {
-      return containFooBarQiz(numberToString, output);
+      return containFooBarQiz(numberToString, string);
     }
-    return output ? output : number;
+    return string ? string : number;
   }
 }
 
 module.exports = FooBarQix;
 
-function containFooBarQiz(numberToString, output) {
+function containFooBarQiz(numberToString, string) {
+
   for (let i = 0; i < numberToString.length; i++) {
     if (numberToString.charAt(i).includes(THREE.toString())) {
-      output += MESSAGE_FOO;
+      string += MESSAGE_FOO;
     }
     if (numberToString.charAt(i).includes(FIVE.toString())) {
-      output += MESSAGE_BAR;
+      string += MESSAGE_BAR;
     }
     if (numberToString.charAt(i).includes(SEVEN.toString())) {
-      output += MESSAGE_QIX;
+      string += MESSAGE_QIX;
     }
   }
-  return output;
+  
+  return string;
 }
 
-function isDivisibleBy3(number) {
-  return number % THREE === 0;
-}
-
-function isDivisibleBy5(number) {
-  return number % FIVE === 0;
-}
-
-function isDivisibleBy7(number) {
-  return number % SEVEN === 0;
+function isDivisibleBy(number, denominator) {
+  return number % denominator === 0;
 }
