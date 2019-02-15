@@ -65,5 +65,3 @@ test('should return "FooBar" if the number is 27', () => {
   let message = bot.testNumber(27);
   expect(message).toBe("FooQix");
 });
-
-

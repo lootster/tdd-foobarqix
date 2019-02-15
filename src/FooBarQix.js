@@ -5,15 +5,22 @@ const THREE = 3;
 const FIVE = 5;
 const SEVEN = 7;
 
-
 class FooBarQix {
+  constructor() {
+    this.array = [];
+    this.array[THREE] = MESSAGE_FOO;
+    this.array[FIVE] = MESSAGE_BAR;
+    this.array[SEVEN] = MESSAGE_QIX;
+  }
+
   testNumber(number) {
     let string = "";
     let numberToString = number.toString();
 
-    if (isDivisibleBy(number, THREE)) string += MESSAGE_FOO;
-    if (isDivisibleBy(number, FIVE)) string += MESSAGE_BAR;
-    if (isDivisibleBy(number, SEVEN)) string += MESSAGE_QIX;
+    Object.keys(this.array).forEach(key => {
+      if (isDivisibleBy(number, key)) string += this.array[key];
+    });
+
     if (numberToString.length > 1) {
       return containFooBarQiz(numberToString, string);
     }
