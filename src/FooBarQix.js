@@ -19,6 +19,7 @@ class FooBarQix {
 
     Object.keys(this.array).forEach(key => {
       if (isDivisibleBy(number, key)) string += this.array[key];
+      if (numberToString.charAt(0).includes(key)) string += this.array[key];
     });
 
     if (numberToString.length > 1) {
@@ -28,7 +29,7 @@ class FooBarQix {
   }
 
   containThreeFiveSeven(numberToString, string) {
-    for (let i = 0; i < numberToString.length; i++) {
+    for (let i = 1; i < numberToString.length; i++) {
       Object.keys(this.array).forEach(key => {
         if (numberToString.charAt(i).includes(key)) string += this.array[key];
       });
@@ -38,24 +39,6 @@ class FooBarQix {
 }
 
 module.exports = FooBarQix;
-
-function containThreeFiveSeven(numberToString, string) {
-  for (let i = 0; i < numberToString.length; i++) {
-    Object.keys(this.array).forEach(key => {
-      if (numberToString.charAt(i).includes(key)) string += this.array[key];
-    });
-    if (numberToString.charAt(i).includes(THREE.toString())) {
-      string += MESSAGE_FOO;
-    }
-    if (numberToString.charAt(i).includes(FIVE.toString())) {
-      string += MESSAGE_BAR;
-    }
-    if (numberToString.charAt(i).includes(SEVEN.toString())) {
-      string += MESSAGE_QIX;
-    }
-  }
-  return string;
-}
 
 function isDivisibleBy(number, denominator) {
   return number % denominator === 0;

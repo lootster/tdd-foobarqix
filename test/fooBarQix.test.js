@@ -6,22 +6,22 @@ test("should return 1 if input is 1", () => {
   expect(message).toBe(1);
 });
 
-test('should return "Foo" if the number is divisible by 3', () => {
+test('should return "FooFoo" if the number is divisible by 3 or contains 3', () => {
   let bot = new FooBarQix();
   let message = bot.testNumber(3);
-  expect(message).toBe("Foo");
+  expect(message).toBe("FooFoo");
 });
 
-test('should return "Bar" if the number is divisible by 5', () => {
+test('should return "Bar" if the number is divisible by 5 or contains 5', () => {
   let bot = new FooBarQix();
   let message = bot.testNumber(5);
-  expect(message).toBe("Bar");
+  expect(message).toBe("BarBar");
 });
 
-test('should return "Qix" if the number is divisible by 7', () => {
+test('should return "Qix" if the number is divisible by 7 or contains 7', () => {
   let bot = new FooBarQix();
   let message = bot.testNumber(7);
-  expect(message).toBe("Qix");
+  expect(message).toBe("QixQix");
 });
 
 test('should return "FooBar" if the number is 51', () => {
@@ -58,10 +58,4 @@ test('should return "FooFooFoo" if the number is 33', () => {
   let bot = new FooBarQix();
   let message = bot.testNumber(33);
   expect(message).toBe("FooFooFoo");
-});
-
-test('should return "FooBar" if the number is 27', () => {
-  let bot = new FooBarQix();
-  let message = bot.testNumber(27);
-  expect(message).toBe("FooQix");
 });
