@@ -59,3 +59,15 @@ test('should return "FooFooFoo" if the number is 33', () => {
   let message = bot.testNumber(33);
   expect(message).toBe("FooFooFoo");
 });
+
+test('should return "Foo" if the number is 9', () => {
+  let bot = new FooBarQix();
+  let message = bot.testNumber(9);
+  expect(message).toBe("Foo");
+});
+
+test('should return "Bar" if the number is 10', () => {
+  let bot = new FooBarQix();
+  let message = bot.testNumber(10);
+  expect(message).toBe("Bar");
+});
