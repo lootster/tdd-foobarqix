@@ -4,7 +4,6 @@ const MESSAGE_QIX = "Qix";
 const FOO_VALUE = 3;
 const BAR_VALUE = 5;
 const QIX_VALUE = 7;
-const ONE_CHAR = 1;
 
 class FooBarQix {
   constructor() {
@@ -34,10 +33,6 @@ class FooBarQix {
     return result;
   }
 
-  browseArray(callback) {
-    return Object.keys(this.fooBarQixArray).forEach(callback);
-  }
-
   checkForOccurence(numberToString) {
     let result = "";
 
@@ -48,6 +43,10 @@ class FooBarQix {
     }
 
     return result;
+  }
+
+  browseArray(callback) {
+    return Object.keys(this.fooBarQixArray).forEach(callback);
   }
 
   getValue(key) {
