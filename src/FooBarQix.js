@@ -1,45 +1,70 @@
 const MESSAGE_FOO = "Foo";
 const MESSAGE_BAR = "Bar";
 const MESSAGE_QIX = "Qix";
-const THREE = 3;
-const FIVE = 5;
-const SEVEN = 7;
+const FOO_VALUE = 3;
+const BAR_VALUE = 5;
+const QIX_VALUE = 7;
+const ONE_CHAR = 1;
 
 class FooBarQix {
   constructor() {
-    this.array = [];
-    this.array[THREE] = MESSAGE_FOO;
-    this.array[FIVE] = MESSAGE_BAR;
-    this.array[SEVEN] = MESSAGE_QIX;
+    this.fooBarQixArray = [];
+    this.fooBarQixArray[FOO_VALUE] = MESSAGE_FOO;
+    this.fooBarQixArray[BAR_VALUE] = MESSAGE_BAR;
+    this.fooBarQixArray[QIX_VALUE] = MESSAGE_QIX;
   }
 
   testNumber(number) {
-    let string = "";
-    let numberToString = number.toString();
+    let result = "";
+    let numberRepresentInString = number.toString();
 
-    Object.keys(this.array).forEach(key => {
-      if (isDivisibleBy(number, key)) string += this.array[key];
-      if (numberToString.charAt(0).includes(key)) string += this.array[key];
-    });
+    result += this.checkForDivisibility(number);
+    result += this.checkForOccurence(numberRepresentInString);
 
-    if (numberToString.length > 1) {
-      return this.containThreeFiveSeven(numberToString, string);
-    }
-    return string ? string : number;
+    return formatResult(result, number);
   }
 
-  containThreeFiveSeven(numberToString, string) {
-    for (let i = 1; i < numberToString.length; i++) {
-      Object.keys(this.array).forEach(key => {
-        if (numberToString.charAt(i).includes(key)) string += this.array[key];
+  checkForDivisibility(number) {
+    let result = "";
+
+    this.browseArray(key => {
+      if (isDivisibleBy(number, key)) result += this.getValue(key);
+    });
+
+    return result;
+  }
+
+  browseArray(callback) {
+    return Object.keys(this.fooBarQixArray).forEach(callback);
+  }
+
+  checkForOccurence(numberToString) {
+    let result = "";
+
+    for (let i = 0; i < numberToString.length; i++) {
+      this.browseArray(key => {
+        if (contains(numberToString, key, i)) result += this.getValue(key);
       });
     }
-    return string;
+
+    return result;
+  }
+
+  getValue(key) {
+    return this.fooBarQixArray[key];
   }
 }
 
 module.exports = FooBarQix;
 
+function formatResult(string, number) {
+  return string ? string : number;
+}
+
 function isDivisibleBy(number, denominator) {
   return number % denominator === 0;
+}
+
+function contains(string, element, index) {
+  return string.charAt(index).includes(element);
 }
